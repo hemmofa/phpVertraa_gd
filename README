@@ -1,0 +1,37 @@
+phpVertraa_gd, by Hemmo de Vries
+based on phpNS, by Jurrie Overgoor
+
+phpVertraa_gd is an implementation of the public API of vertraa.gd.
+
+phpVertraa_gd is licensed under the GNU General Public License version 3. Please see the COPYING file for more information.
+
+Developer key
+-------------
+To use phpVertraa_gd, you must have an API key. You can request one at http://vertraa.gd/
+
+How to use phpVertraa_gd
+----------------
+Step 1: get your developer key at http://vertraa.gd/
+
+Step 2: initialize as follows
+
+The complete code is like this:
+
+// Initialize Vertraa.gd API
+require_once('./vtgdapi/vertraagd.php');
+
+$vtgdretriever = new vtgdcURLRetriever($vtgdapi_key);
+
+// Initialize Cache
+require_once('./vtgdapi/cache/FileCache.php');
+$vtgdcache = new VtgdFileCache($vtgdretriever, "tmp");
+$vtgd = new VERTRAAGD($vtgdcache);
+$vertraagd = $vtgd->getVertraagd();
+
+foreach($vertraagd as $vertraagd) {
+	$percentage = $vertraagd->getPercentage();
+	$totaal = $vertraagd->getTotaal();
+	$aantalvertraagd = $vertraagd->getVertraagd();
+	$opgeheven = $vertraagd->getOpgeheven();
+	$tekst = $vertraagd->getTekst();
+ }
