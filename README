@@ -17,13 +17,16 @@ Step 2: initialize as follows
 
 The complete code is like this:
 
+// Set API Key
+$vtgdapi_key = ""; // Enter API Key here.
+
 // Initialize Vertraa.gd API
-require_once('./vtgdapi/vertraagd.php');
+require_once('./vertraagd.php');
 
 $vtgdretriever = new vtgdcURLRetriever($vtgdapi_key);
 
 // Initialize Cache
-require_once('./vtgdapi/cache/FileCache.php');
+require_once('./cache/FileCache.php');
 $vtgdcache = new VtgdFileCache($vtgdretriever, "tmp");
 $vtgd = new VERTRAAGD($vtgdcache);
 $vertraagd = $vtgd->getVertraagd();
